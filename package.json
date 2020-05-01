@@ -1,5 +1,5 @@
 {
-  "name": "oojob-protobuf",
+  "name": "@oojob/oojob-protobuf",
   "version": "0.0.2",
   "description": "oojob base package",
   "main": "system_pb.js",

@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Protocol Documentation</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic"/>
+    <style>
+      body {
+        width: 60em;
+        margin: 1em auto;
+        color: #222;
+        font-family: "Ubuntu", sans-serif;
+        padding-bottom: 4em;
+      }
+
+      h1 {
+        font-weight: normal;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+      }
+
+      h2 {
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+        margin: 1.5em 0;
+      }
+
+      h3 {
+        font-weight: normal;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+      }
+
+      a {
+        text-decoration: none;
+        color: #567e25;
+      }
+
+      table {
+        width: 100%;
+        font-size: 80%;
+        border-collapse: collapse;
+      }
+
+      thead {
+        font-weight: 700;
+        background-color: #dcdcdc;
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: #fbfbfb;
+      }
+
+      td {
+        border: 1px solid #ccc;
+        padding: 0.5ex 2ex;
+      }
+
+      td p {
+        text-indent: 1em;
+        margin: 0;
+      }
+
+      td p:nth-child(1) {
+        text-indent: 0;  
+      }
+
+       
+      .field-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .field-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .field-table td:nth-child(3) {  
+        width: 6em;
+      }
+      .field-table td:nth-child(4) {  
+        width: auto;
+      }
+
+       
+      .extension-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(3) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(4) {  
+        width: 5em;
+      }
+      .extension-table td:nth-child(5) {  
+        width: auto;
+      }
+
+       
+      .enum-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .enum-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .enum-table td:nth-child(3) {  
+        width: auto;
+      }
+
+       
+      .scalar-value-types-table tr {
+        height: 3em;
+      }
+
+       
+      #toc-container ul {
+        list-style-type: none;
+        padding-left: 1em;
+        line-height: 180%;
+        margin: 0;
+      }
+      #toc > li > a {
+        font-weight: bold;
+      }
+
+       
+      .file-heading {
+        width: 100%;
+        display: table;
+        border-bottom: 1px solid #aaa;
+        margin: 4em 0 1.5em 0;
+      }
+      .file-heading h2 {
+        border: none;
+        display: table-cell;
+      }
+      .file-heading a {
+        text-align: right;
+        display: table-cell;
+      }
+
+       
+      .badge {
+        width: 1.6em;
+        height: 1.6em;
+        display: inline-block;
+
+        line-height: 1.6em;
+        text-align: center;
+        font-weight: bold;
+        font-size: 60%;
+
+        color: #89ba48;
+        background-color: #dff0c8;
+
+        margin: 0.5ex 1em 0.5ex -1em;
+        border: 1px solid #fbfbfb;
+        border-radius: 1ex;
+      }
+    </style>
+
+    
+    <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+  </head>
+
+  <body>
+
+    <h1 id="title">Protocol Documentation</h1>
+
+    <h2>Table of Contents</h2>
+
+    <div id="toc-container">
+      <ul id="toc">
+        
+          
+          <li>
+            <a href="#system.proto">system.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#github.com.oojob.protobuf.Attachment"><span class="badge">M</span>Attachment</a>
+                </li>
+              
+                <li>
+                  <a href="#github.com.oojob.protobuf.DefaultResponse"><span class="badge">M</span>DefaultResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#github.com.oojob.protobuf.Email"><span class="badge">M</span>Email</a>
+                </li>
+              
+                <li>
+                  <a href="#github.com.oojob.protobuf.Empty"><span class="badge">M</span>Empty</a>
+                </li>
+              
+                <li>
+                  <a href="#github.com.oojob.protobuf.Id"><span class="badge">M</span>Id</a>
+                </li>
+              
+                <li>
+                  <a href="#github.com.oojob.protobuf.Identifier"><span class="badge">M</span>Identifier</a>
+                </li>
+              
+                <li>
+                  <a href="#github.com.oojob.protobuf.Range"><span class="badge">M</span>Range</a>
+                </li>
+              
+              
+                <li>
+                  <a href="#github.com.oojob.protobuf.Email.EmailStatus"><span class="badge">E</span>Email.EmailStatus</a>
+                </li>
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#cursor.proto">cursor.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#github.com.oojob.protobuf.Pagination"><span class="badge">M</span>Pagination</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#health.proto">health.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#github.com.oojob.protobuf.HealthCheckRequest"><span class="badge">M</span>HealthCheckRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#github.com.oojob.protobuf.HealthCheckResponse"><span class="badge">M</span>HealthCheckResponse</a>
+                </li>
+              
+              
+                <li>
+                  <a href="#github.com.oojob.protobuf.HealthCheckResponse.ServingStatus"><span class="badge">E</span>HealthCheckResponse.ServingStatus</a>
+                </li>
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#metadata.proto">metadata.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#github.com.oojob.protobuf.Metadata"><span class="badge">M</span>Metadata</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#place.proto">place.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#github.com.oojob.protobuf.Address"><span class="badge">M</span>Address</a>
+                </li>
+              
+                <li>
+                  <a href="#github.com.oojob.protobuf.AggregateRating"><span class="badge">M</span>AggregateRating</a>
+                </li>
+              
+                <li>
+                  <a href="#github.com.oojob.protobuf.GeoLocation"><span class="badge">M</span>GeoLocation</a>
+                </li>
+              
+                <li>
+                  <a href="#github.com.oojob.protobuf.Place"><span class="badge">M</span>Place</a>
+                </li>
+              
+                <li>
+                  <a href="#github.com.oojob.protobuf.Rating"><span class="badge">M</span>Rating</a>
+                </li>
+              
+                <li>
+                  <a href="#github.com.oojob.protobuf.Review"><span class="badge">M</span>Review</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#time.proto">time.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#github.com.oojob.protobuf.Time"><span class="badge">M</span>Time</a>
+                </li>
+              
+              
+                <li>
+                  <a href="#github.com.oojob.protobuf.DaysOfWeek"><span class="badge">E</span>DaysOfWeek</a>
+                </li>
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#applicants.proto">applicants.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#github.com.oojob.protobuf.Applicant"><span class="badge">M</span>Applicant</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+        <li><a href="#scalar-value-types">Scalar Value Types</a></li>
+      </ul>
+    </div>
+
+    
+      
+      <div class="file-heading">
+        <h2 id="system.proto">system.proto</h2><a href="#title">Top</a>
+      </div>
+      <p>Created on Sun Apr 28 2020</p><p>Base entity protobuf for place/rating/review associated with upper level</p><p>models/schema's.</p><p>This file is resposible for storing all the base protobuff `message`.</p><p>@authors nirajgeorgian@oojob.io (Niraj Kishore)</p><p>Copyright (c) 2020 - oojob</p>
+
+      
+        <h3 id="github.com.oojob.protobuf.Attachment">Attachment</h3>
+        <p>Attachment help's us to define what type of attchment and which file is</p><p>responsible for it.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Attachment type :- it defines file type which help&#39;s frontend to render
+/ appropiate view for example: type = PDF || type = JPEG </p></td>
+                </tr>
+              
+                <tr>
+                  <td>file</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Attachment file :- file upload for this attachment same as `name` </p></td>
+                </tr>
+              
+                <tr>
+                  <td>upload_date</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>Attachment upload_date :- date time on which the attachment was uploaded </p></td>
+                </tr>
+              
+                <tr>
+                  <td>url</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Attachment url :- generated url for the attachment </p></td>
+                </tr>
+              
+                <tr>
+                  <td>user</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Attachment user :- user who upload the attachment
+/ it will store the user id who stored the attachment </p></td>
+                </tr>
+              
+                <tr>
+                  <td>folder</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>folder :- which describe where to put it
+/ for example for ccompanies in S3 there is a seperate folder for companies
+/ for user profiles there is a seperate folder for user profile </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="github.com.oojob.protobuf.DefaultResponse">DefaultResponse</h3>
+        <p>DefaultResponse act's as a default response for our standard use case</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>DefaultResponse status :- weather the performed operation succedded or not </p></td>
+                </tr>
+              
+                <tr>
+                  <td>error</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>DefaultResponse error :- what&#39;s the error if existed based on status </p></td>
+                </tr>
+              
+                <tr>
+                  <td>code</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>DefaultResponse code :- what&#39;s the code for the error which originated </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="github.com.oojob.protobuf.Email">Email</h3>
+        <p>Email help's us to store email valeu with some metadata</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>email</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Email email :- actual value of email </p></td>
+                </tr>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#github.com.oojob.protobuf.Email.EmailStatus">Email.EmailStatus</a></td>
+                  <td></td>
+                  <td><p>Email status :- any one value from enum email status </p></td>
+                </tr>
+              
+                <tr>
+                  <td>show</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Email show :- weather or not the email should be publically visible </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="github.com.oojob.protobuf.Empty">Empty</h3>
+        <p>Empty is used in those place where don't have any input request</p>
+
+        
+
+        
+      
+        <h3 id="github.com.oojob.protobuf.Id">Id</h3>
+        <p>Id help's us to define id as reusable peice</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Id id :- uniquely identified value </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="github.com.oojob.protobuf.Identifier">Identifier</h3>
+        <p>Identifier help's us to represent an base entity</p><p>(Person | Company | Job)</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>identifier</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Identifier ID (uniquely identifythe item) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Identifier name :- name for the identifier </p></td>
+                </tr>
+              
+                <tr>
+                  <td>alternate_name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Identifier alternate name </p></td>
+                </tr>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Identifier type :- type for the entity </p></td>
+                </tr>
+              
+                <tr>
+                  <td>additional_type</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Identifier URL (generally a URL) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Identifier description </p></td>
+                </tr>
+              
+                <tr>
+                  <td>disambiguating_description</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Identifier description children to remove ambiguity </p></td>
+                </tr>
+              
+                <tr>
+                  <td>headline</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Identifier headline :- short crisp about data </p></td>
+                </tr>
+              
+                <tr>
+                  <td>slogan</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Identifier slogan </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="github.com.oojob.protobuf.Range">Range</h3>
+        <p>Range help's us to define min/max range value</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>min</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>Range min :- min value for range For example - 2 </p></td>
+                </tr>
+              
+                <tr>
+                  <td>max</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>Range max :- max value for range. For example - 5 </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+        <h3 id="github.com.oojob.protobuf.Email.EmailStatus">Email.EmailStatus</h3>
+        <p>Email EmailStatus :- values associated with email status</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>WAITING</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>CONFIRMED</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>BLOCKED</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>EXPIRED</td>
+                <td>3</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="cursor.proto">cursor.proto</h2><a href="#title">Top</a>
+      </div>
+      <p>Created on Sun Apr 28 2020</p><p>Base entity protobuf for cursor.</p><p>This file is resposible for storing all the base protobuff `message`.</p><p>@authors nirajgeorgian@oojob.io (Niraj Kishore)</p><p>Copyright (c) 2020 - oojob</p>
+
+      
+        <h3 id="github.com.oojob.protobuf.Pagination">Pagination</h3>
+        <p>Pagination help's us to paginate large set of data through curser based</p><p>where</p><p>what's going to come has to be put on next and what was previous should be</p><p>mentioned on previous.</p><p>cursors in pagination</p><p>Cursors are pointers to the spot where we’ve left off in the data. More</p><p>specifically, cursors are variables that can hold any value that the</p><p>client</p><p>can pass to the server to help the it find the point at which it should</p><p>start</p><p>returning data. It doesn’t matter what value you use, and in fact it</p><p>should</p><p>be opaque from the point of view of the client.</p><p>https://www.apollographql.com/blog/understanding-pagination-rest-graphql-and-relay-b10f835549e7</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>first</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>Pagination first :- first x value to take out of fetched result </p></td>
+                </tr>
+              
+                <tr>
+                  <td>after</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Pagination after :- after fetching skip the first x items </p></td>
+                </tr>
+              
+                <tr>
+                  <td>offset</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Pagination offset :- standard offset in pagination </p></td>
+                </tr>
+              
+                <tr>
+                  <td>limit</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>Pagination limit :- standard limit in pagination </p></td>
+                </tr>
+              
+                <tr>
+                  <td>previous</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Pagination previous :- previous curser for data </p></td>
+                </tr>
+              
+                <tr>
+                  <td>next</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Pagination :- next curser for data </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="health.proto">health.proto</h2><a href="#title">Top</a>
+      </div>
+      <p>Created on Sun Apr 28 2020</p><p>Base entity protobuf for health report.</p><p>https://github.com/grpc/grpc/blob/master/doc/health-checking.md</p><p>This file is resposible for storing all the base protobuff `message`.</p><p>@authors nirajgeorgian@oojob.io (Niraj Kishore)</p><p>Copyright (c) 2020 - oojob</p>
+
+      
+        <h3 id="github.com.oojob.protobuf.HealthCheckRequest">HealthCheckRequest</h3>
+        <p>HealthCheckRequest official grpc health check request stub</p><p>Health checks are used to probe whether the server is able to handle rpcs.</p><p>The client-to-server health checking can happen from point to point or via</p><p>some control system.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>service</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>HealthCheckRequest service : service name </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="github.com.oojob.protobuf.HealthCheckResponse">HealthCheckResponse</h3>
+        <p>HealthCheckResponse official grpc health check response stub</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#github.com.oojob.protobuf.HealthCheckResponse.ServingStatus">HealthCheckResponse.ServingStatus</a></td>
+                  <td></td>
+                  <td><p>HealthCheckResponse choose any one vaue
+/ (UNKNOWN, SERVING, NOT_SERVING) </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+        <h3 id="github.com.oojob.protobuf.HealthCheckResponse.ServingStatus">HealthCheckResponse.ServingStatus</h3>
+        <p>HealthCheckResponse available option's as response value</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>UNKNOWN</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>SERVING</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>NOT_SERVING</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="metadata.proto">metadata.proto</h2><a href="#title">Top</a>
+      </div>
+      <p>Created on Sun Apr 28 2020</p><p>Base entity protobuf for metadata associated with upper level</p><p>models/schema's.</p><p>This model is helper model which attach additional data related to time</p><p>For example: when it was created, when it moved to draft, or when it moved</p><p>to expired etc. This file is responsible for storing all the base protobuf</p><p>`message`.</p><p>@authors nirajgeorgian@oojob.io (Niraj Kishore)</p><p>Copyright (c) 2020 - oojob</p>
+
+      
+        <h3 id="github.com.oojob.protobuf.Metadata">Metadata</h3>
+        <p>Metadata it should be attached with higher level entity</p><p>It will provide you with additional attachment of time based which will</p><p>help you to analyze the life process of the entity it attached to.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>created_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>Metadata created_at :- creation date </p></td>
+                </tr>
+              
+                <tr>
+                  <td>updated_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>Metadata updated_at :-updation date </p></td>
+                </tr>
+              
+                <tr>
+                  <td>published_date</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>Metadata published_date :- first published date </p></td>
+                </tr>
+              
+                <tr>
+                  <td>end_date</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>Metadata end_date :- date from when it become invalid </p></td>
+                </tr>
+              
+                <tr>
+                  <td>last_active</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>Metadata last_active :- fate on which this entity was last active </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="place.proto">place.proto</h2><a href="#title">Top</a>
+      </div>
+      <p>Created on Sun Apr 28 2020</p><p>Base entity protobuf for place/rating/review associated with upper level</p><p>models/schema's.</p><p>This file is resposible for storing all the base protobuff `message`.</p><p>@authors nirajgeorgian@oojob.io (Niraj Kishore)</p><p>Copyright (c) 2020 - oojob</p>
+
+      
+        <h3 id="github.com.oojob.protobuf.Address">Address</h3>
+        <p>Address is used for storing address for entities</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>country</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Address country :- The country. For example, USA.
+/ You can also provide the two-letter. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>locality</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Address locality :- The locality in which the street address is.
+/ For example, Mountain View. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>region</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Address region :- The region in which the locality is.
+/ For example, California </p></td>
+                </tr>
+              
+                <tr>
+                  <td>postal_code</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Address postal code :- For example, 94043. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>street</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Address street :- For example, 1600 Amphitheatre Pkwy. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="github.com.oojob.protobuf.AggregateRating">AggregateRating</h3>
+        <p>AggregateRating is used for aggregating Rating on Thing's rating</p><p>(Person | Company | Job)</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>item_reviewed</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>AggregateRating :- </p></td>
+                </tr>
+              
+                <tr>
+                  <td>rating_count</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>AggregateRating :- </p></td>
+                </tr>
+              
+                <tr>
+                  <td>review_rount</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>AggregateRating :- </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="github.com.oojob.protobuf.GeoLocation">GeoLocation</h3>
+        <p>GeoLocation is used for geo based data storage (point based)</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>elevation</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>GeoLocation elevation :- Values may be of the form
+/ &#39;NUMBER UNITOFMEASUREMENT&#39; For Example &#39;1,000 m&#39;, &#39;3,200 ft&#39; </p></td>
+                </tr>
+              
+                <tr>
+                  <td>latitude</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>GeoLocation latitude :- For example 37.42242 </p></td>
+                </tr>
+              
+                <tr>
+                  <td>longitude</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>GeoLocation longitude :- For example -122.08585 </p></td>
+                </tr>
+              
+                <tr>
+                  <td>postal_code</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>GeoLocation postal code. For example, 94043. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="github.com.oojob.protobuf.Place">Place</h3>
+        <p>Place help's us to store an particular place name with latitude and</p><p>longitude</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>address</td>
+                  <td><a href="#github.com.oojob.protobuf.Address">Address</a></td>
+                  <td></td>
+                  <td><p>Place Address which includes name and all data </p></td>
+                </tr>
+              
+                <tr>
+                  <td>review</td>
+                  <td><a href="#github.com.oojob.protobuf.Review">Review</a></td>
+                  <td></td>
+                  <td><p>Place review :- review for a place </p></td>
+                </tr>
+              
+                <tr>
+                  <td>aggregate_rating</td>
+                  <td><a href="#github.com.oojob.protobuf.AggregateRating">AggregateRating</a></td>
+                  <td></td>
+                  <td><p>Place aggregate rating based on entity </p></td>
+                </tr>
+              
+                <tr>
+                  <td>branch_code</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>`http://starbucks.co.uk/store-locator/etc/detail/3047` the code &#34;3047&#34; </p></td>
+                </tr>
+              
+                <tr>
+                  <td>geo</td>
+                  <td><a href="#github.com.oojob.protobuf.GeoLocation">GeoLocation</a></td>
+                  <td></td>
+                  <td><p>Place geo location data </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="github.com.oojob.protobuf.Rating">Rating</h3>
+        <p>Rating is used for rating an Thing</p><p>(Person | Company | Job)</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>author</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Rating author :- Id for Person | Organization
+/ For Exam - UUIDod user </p></td>
+                </tr>
+              
+                <tr>
+                  <td>best_rating</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>Rating best rating :- best rating value as string </p></td>
+                </tr>
+              
+                <tr>
+                  <td>explanation</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Rating explanation :- explanation for the rating </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>Rating Value For exam - 4 </p></td>
+                </tr>
+              
+                <tr>
+                  <td>worst_rating</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>Rating worst rating :- worst rating value as string </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="github.com.oojob.protobuf.Review">Review</h3>
+        <p>Review help's us to review any Thing</p><p>(Person | Company | Job)</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>item_reviewed</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Review on Thing (Company | Job | Profile) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>aspect</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Review aspect is relevant to this part or facet of the itemReviewed. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>body</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Review data </p></td>
+                </tr>
+              
+                <tr>
+                  <td>rating</td>
+                  <td><a href="#github.com.oojob.protobuf.Rating">Rating</a></td>
+                  <td></td>
+                  <td><p>Review rating </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="time.proto">time.proto</h2><a href="#title">Top</a>
+      </div>
+      <p>Created on Sun Apr 28 2020</p><p>Base entity protobuf for place/rating/review associated with upper level</p><p>models/schema's.</p><p>This file is resposible for storing all the base protobuff `message`.</p><p>@authors nirajgeorgian@oojob.io (Niraj Kishore)</p><p>Copyright (c) 2020 - oojob</p>
+
+      
+        <h3 id="github.com.oojob.protobuf.Time">Time</h3>
+        <p>TimeSpecification is used for time range (start, end)</p><p>along with dates as string from week.</p><p>/ TimeSpecification opens :- The opening hour of the place or service on</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>opens</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>given day(s) of the week. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>closes</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>TimeSpecification closes :- The closing hour of the place or service on
+/ the given day(s) of the week. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>days_of_week</td>
+                  <td><a href="#github.com.oojob.protobuf.DaysOfWeek">DaysOfWeek</a></td>
+                  <td>repeated</td>
+                  <td><p>TimeSpecification DaysOfWeek :- choose mutliple days from days
+/ For Example [&#34;SUNDAY&#34;, &#34;MONDAY&#34;, ...] </p></td>
+                </tr>
+              
+                <tr>
+                  <td>valid_from</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>TimeSpecification valid_from :- The date when the item becomes valid. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>valid_through</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>TimeSpecification valid_through :- The date after when the item is not
+/ valid. For example the end of an offer, salary period, or a period of
+/ opening hours. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+        <h3 id="github.com.oojob.protobuf.DaysOfWeek">DaysOfWeek</h3>
+        <p>DaysOfWeek help's us to represent days on week in order</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>MONDAY</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>TUESDAY</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>WEDNESDAY</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>THRUSDAY</td>
+                <td>3</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>FRIDAY</td>
+                <td>4</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>STAURDAY</td>
+                <td>5</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>SUNDAY</td>
+                <td>6</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="applicants.proto">applicants.proto</h2><a href="#title">Top</a>
+      </div>
+      <p>Created on Sun Apr 29 2020</p><p>Applicant entity related messages.</p><p>This file is resposible for all operation related to job entity.</p><p>@authors nirajgeorgian@oojob.io (Niraj Kishore)</p><p>Copyright (c) 2020 - oojob</p>
+
+      
+        <h3 id="github.com.oojob.protobuf.Applicant">Applicant</h3>
+        <p>Applicant for job | task</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>applications</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>total applied applicant&#39;s </p></td>
+                </tr>
+              
+                <tr>
+                  <td>shortlisted</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>shortlisted applicant </p></td>
+                </tr>
+              
+                <tr>
+                  <td>onhold</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>onhold status applicant </p></td>
+                </tr>
+              
+                <tr>
+                  <td>rejected</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>rejected applicant </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+
+    <h2 id="scalar-value-types">Scalar Value Types</h2>
+    <table class="scalar-value-types-table">
+      <thead>
+        <tr><td>.proto Type</td><td>Notes</td><td>C++</td><td>Java</td><td>Python</td><td>Go</td><td>C#</td><td>PHP</td><td>Ruby</td></tr>
+      </thead>
+      <tbody>
+        
+          <tr id="double">
+            <td>double</td>
+            <td></td>
+            <td>double</td>
+            <td>double</td>
+            <td>float</td>
+            <td>float64</td>
+            <td>double</td>
+            <td>float</td>
+            <td>Float</td>
+          </tr>
+        
+          <tr id="float">
+            <td>float</td>
+            <td></td>
+            <td>float</td>
+            <td>float</td>
+            <td>float</td>
+            <td>float32</td>
+            <td>float</td>
+            <td>float</td>
+            <td>Float</td>
+          </tr>
+        
+          <tr id="int32">
+            <td>int32</td>
+            <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint32 instead.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="int64">
+            <td>int64</td>
+            <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint64 instead.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="uint32">
+            <td>uint32</td>
+            <td>Uses variable-length encoding.</td>
+            <td>uint32</td>
+            <td>int</td>
+            <td>int/long</td>
+            <td>uint32</td>
+            <td>uint</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="uint64">
+            <td>uint64</td>
+            <td>Uses variable-length encoding.</td>
+            <td>uint64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>uint64</td>
+            <td>ulong</td>
+            <td>integer/string</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sint32">
+            <td>sint32</td>
+            <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int32s.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sint64">
+            <td>sint64</td>
+            <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int64s.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="fixed32">
+            <td>fixed32</td>
+            <td>Always four bytes. More efficient than uint32 if values are often greater than 2^28.</td>
+            <td>uint32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>uint32</td>
+            <td>uint</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="fixed64">
+            <td>fixed64</td>
+            <td>Always eight bytes. More efficient than uint64 if values are often greater than 2^56.</td>
+            <td>uint64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>uint64</td>
+            <td>ulong</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="sfixed32">
+            <td>sfixed32</td>
+            <td>Always four bytes.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sfixed64">
+            <td>sfixed64</td>
+            <td>Always eight bytes.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="bool">
+            <td>bool</td>
+            <td></td>
+            <td>bool</td>
+            <td>boolean</td>
+            <td>boolean</td>
+            <td>bool</td>
+            <td>bool</td>
+            <td>boolean</td>
+            <td>TrueClass/FalseClass</td>
+          </tr>
+        
+          <tr id="string">
+            <td>string</td>
+            <td>A string must always contain UTF-8 encoded or 7-bit ASCII text.</td>
+            <td>string</td>
+            <td>String</td>
+            <td>str/unicode</td>
+            <td>string</td>
+            <td>string</td>
+            <td>string</td>
+            <td>String (UTF-8)</td>
+          </tr>
+        
+          <tr id="bytes">
+            <td>bytes</td>
+            <td>May contain any arbitrary sequence of bytes.</td>
+            <td>string</td>
+            <td>ByteString</td>
+            <td>str</td>
+            <td>[]byte</td>
+            <td>ByteString</td>
+            <td>string</td>
+            <td>String (ASCII-8BIT)</td>
+          </tr>
+        
+      </tbody>
+    </table>
+  </body>
+</html>
+

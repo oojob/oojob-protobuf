@@ -1,0 +1,34 @@
+{
+  "name": "oojob-protobuf",
+  "version": "0.0.1",
+  "description": "oojob base package",
+  "main": "system_pb.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "release": "standard-version",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oojob/oojob-protobuf.git"
+  },
+  "keywords": [
+    "oojob",
+    "protobuf"
+  ],
+  "author": "nirajgeorgian <nirajgeorgian@gmail.com> (https://github.com/nirajgeorgian)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oojob/oojob-protobuf/issues"
+  },
+  "homepage": "https://github.com/oojob/oojob-protobuf#readme",
+  "devDependencies": {
+    "standard-version": "^7.1.0"
+  },
+  "dependencies": {
+    "@types/google-protobuf": "^3.7.2",
+    "google-protobuf": "^3.11.4"
+  }
+}

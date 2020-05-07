@@ -1,4 +1,4 @@
-// package: github.com.oojob.protobuf
+// package: oojob.protobuf
 // file: health.proto
 
 import * as jspb from "google-protobuf";

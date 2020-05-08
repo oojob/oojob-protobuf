@@ -71,7 +71,8 @@ proto.oojob.protobuf.Pagination.toObject = function(includeInstance, msg) {
     offset: jspb.Message.getFieldWithDefault(msg, 3, ""),
     limit: jspb.Message.getFieldWithDefault(msg, 4, 0),
     previous: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    next: jspb.Message.getFieldWithDefault(msg, 6, "")
+    next: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    identifier: jspb.Message.getFieldWithDefault(msg, 7, "")
   };
 
   if (includeInstance) {
@@ -131,6 +132,10 @@ proto.oojob.protobuf.Pagination.deserializeBinaryFromReader = function(msg, read
     case 6:
       var value = /** @type {string} */ (reader.readString());
       msg.setNext(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setIdentifier(value);
       break;
     default:
       reader.skipField();
@@ -200,6 +205,13 @@ proto.oojob.protobuf.Pagination.serializeBinaryToWriter = function(message, writ
   if (f.length > 0) {
     writer.writeString(
       6,
+      f
+    );
+  }
+  f = message.getIdentifier();
+  if (f.length > 0) {
+    writer.writeString(
+      7,
       f
     );
   }
@@ -311,6 +323,24 @@ proto.oojob.protobuf.Pagination.prototype.getNext = function() {
  */
 proto.oojob.protobuf.Pagination.prototype.setNext = function(value) {
   return jspb.Message.setProto3StringField(this, 6, value);
+};
+
+
+/**
+ * optional string identifier = 7;
+ * @return {string}
+ */
+proto.oojob.protobuf.Pagination.prototype.getIdentifier = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.oojob.protobuf.Pagination} returns this
+ */
+proto.oojob.protobuf.Pagination.prototype.setIdentifier = function(value) {
+  return jspb.Message.setProto3StringField(this, 7, value);
 };
 
 

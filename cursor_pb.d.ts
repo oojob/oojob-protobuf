@@ -22,6 +22,9 @@ export class Pagination extends jspb.Message {
   getNext(): string;
   setNext(value: string): void;
 
+  getIdentifier(): string;
+  setIdentifier(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Pagination.AsObject;
   static toObject(includeInstance: boolean, msg: Pagination): Pagination.AsObject;
@@ -40,6 +43,7 @@ export namespace Pagination {
     limit: number,
     previous: string,
     next: string,
+    identifier: string,
   }
 }
 

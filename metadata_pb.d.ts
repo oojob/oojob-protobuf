@@ -1,4 +1,4 @@
-// package: oojob.protobuf
+// package: github.com.oojob.protobuf
 // file: metadata.proto
 
 import * as jspb from "google-protobuf";

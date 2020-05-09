@@ -7,11 +7,11 @@ export class Pagination extends jspb.Message {
   getFirst(): number;
   setFirst(value: number): void;
 
-  getAfter(): string;
-  setAfter(value: string): void;
+  getAfter(): number;
+  setAfter(value: number): void;
 
-  getOffset(): string;
-  setOffset(value: string): void;
+  getOffset(): number;
+  setOffset(value: number): void;
 
   getLimit(): number;
   setLimit(value: number): void;
@@ -38,8 +38,8 @@ export class Pagination extends jspb.Message {
 export namespace Pagination {
   export type AsObject = {
     first: number,
-    after: string,
-    offset: string,
+    after: number,
+    offset: number,
     limit: number,
     previous: string,
     next: string,

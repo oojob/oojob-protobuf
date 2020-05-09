@@ -67,8 +67,8 @@ proto.github.com.oojob.protobuf.Pagination.prototype.toObject = function(opt_inc
 proto.github.com.oojob.protobuf.Pagination.toObject = function(includeInstance, msg) {
   var f, obj = {
     first: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    after: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    offset: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    after: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    offset: jspb.Message.getFieldWithDefault(msg, 3, 0),
     limit: jspb.Message.getFieldWithDefault(msg, 4, 0),
     previous: jspb.Message.getFieldWithDefault(msg, 5, ""),
     next: jspb.Message.getFieldWithDefault(msg, 6, ""),
@@ -114,11 +114,11 @@ proto.github.com.oojob.protobuf.Pagination.deserializeBinaryFromReader = functio
       msg.setFirst(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {number} */ (reader.readInt64());
       msg.setAfter(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {number} */ (reader.readInt64());
       msg.setOffset(value);
       break;
     case 4:
@@ -174,15 +174,15 @@ proto.github.com.oojob.protobuf.Pagination.serializeBinaryToWriter = function(me
     );
   }
   f = message.getAfter();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f !== 0) {
+    writer.writeInt64(
       2,
       f
     );
   }
   f = message.getOffset();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f !== 0) {
+    writer.writeInt64(
       3,
       f
     );
@@ -237,38 +237,38 @@ proto.github.com.oojob.protobuf.Pagination.prototype.setFirst = function(value) 
 
 
 /**
- * optional string after = 2;
- * @return {string}
+ * optional int64 after = 2;
+ * @return {number}
  */
 proto.github.com.oojob.protobuf.Pagination.prototype.getAfter = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /**
- * @param {string} value
+ * @param {number} value
  * @return {!proto.github.com.oojob.protobuf.Pagination} returns this
  */
 proto.github.com.oojob.protobuf.Pagination.prototype.setAfter = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 
 /**
- * optional string offset = 3;
- * @return {string}
+ * optional int64 offset = 3;
+ * @return {number}
  */
 proto.github.com.oojob.protobuf.Pagination.prototype.getOffset = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
 /**
- * @param {string} value
+ * @param {number} value
  * @return {!proto.github.com.oojob.protobuf.Pagination} returns this
  */
 proto.github.com.oojob.protobuf.Pagination.prototype.setOffset = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3IntField(this, 3, value);
 };
 
 

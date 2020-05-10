@@ -342,6 +342,33 @@
             </ul>
           </li>
         
+          
+          <li>
+            <a href="#permissions.proto">permissions.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#github.com.oojob.protobuf.PermissionsBase"><span class="badge">M</span>PermissionsBase</a>
+                </li>
+              
+                <li>
+                  <a href="#github.com.oojob.protobuf.PermissionsBase.PermissionsEntry"><span class="badge">M</span>PermissionsBase.PermissionsEntry</a>
+                </li>
+              
+                <li>
+                  <a href="#github.com.oojob.protobuf.ProfileOperations"><span class="badge">M</span>ProfileOperations</a>
+                </li>
+              
+              
+                <li>
+                  <a href="#github.com.oojob.protobuf.ProfileOperations.ProfileOperationOptions"><span class="badge">E</span>ProfileOperations.ProfileOperationOptions</a>
+                </li>
+              
+              
+              
+            </ul>
+          </li>
+        
         <li><a href="#scalar-value-types">Scalar Value Types</a></li>
       </ul>
     </div>
@@ -1431,6 +1458,140 @@
         
       
 
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="permissions.proto">permissions.proto</h2><a href="#title">Top</a>
+      </div>
+      <p>Created on Sun Apr 28 2020</p><p>Profile related messages.</p><p>This file is resposible for all operation related to profile.</p><p>@author nirajgeorgian@oojob.io (Niraj Kishore)</p><p>Copyright (c) 2020 - oojobs</p>
+
+      
+        <h3 id="github.com.oojob.protobuf.PermissionsBase">PermissionsBase</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>permissions</td>
+                  <td><a href="#github.com.oojob.protobuf.PermissionsBase.PermissionsEntry">PermissionsBase.PermissionsEntry</a></td>
+                  <td>repeated</td>
+                  <td><p>map </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="github.com.oojob.protobuf.PermissionsBase.PermissionsEntry">PermissionsBase.PermissionsEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#github.com.oojob.protobuf.ProfileOperations">ProfileOperations</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="github.com.oojob.protobuf.ProfileOperations">ProfileOperations</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>profile_operations</td>
+                  <td><a href="#github.com.oojob.protobuf.ProfileOperations.ProfileOperationOptions">ProfileOperations.ProfileOperationOptions</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+        <h3 id="github.com.oojob.protobuf.ProfileOperations.ProfileOperationOptions">ProfileOperations.ProfileOperationOptions</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>CREATE</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>READ</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>UPDATE</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>DELETE</td>
+                <td>3</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>BULK_UPDATE</td>
+                <td>4</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
       
 
       

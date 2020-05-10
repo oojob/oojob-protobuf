@@ -1,6 +1,6 @@
 {
   "name": "@oojob/oojob-protobuf",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "oojob base package",
   "main": "system_pb.js",
   "directories": {

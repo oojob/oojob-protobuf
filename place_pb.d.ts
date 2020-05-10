@@ -46,8 +46,8 @@ export class AggregateRating extends jspb.Message {
   getRatingCount(): number;
   setRatingCount(value: number): void;
 
-  getReviewRount(): number;
-  setReviewRount(value: number): void;
+  getReviewCount(): number;
+  setReviewCount(value: number): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): AggregateRating.AsObject;
@@ -63,7 +63,7 @@ export namespace AggregateRating {
   export type AsObject = {
     itemReviewed: string,
     ratingCount: number,
-    reviewRount: number,
+    reviewCount: number,
   }
 }
 
@@ -143,8 +143,8 @@ export class Address extends jspb.Message {
   getRegion(): string;
   setRegion(value: string): void;
 
-  getPostalCode(): string;
-  setPostalCode(value: string): void;
+  getPostalCode(): number;
+  setPostalCode(value: number): void;
 
   getStreet(): string;
   setStreet(value: string): void;
@@ -164,7 +164,7 @@ export namespace Address {
     country: string,
     locality: string,
     region: string,
-    postalCode: string,
+    postalCode: number,
     street: string,
   }
 }

@@ -4,17 +4,23 @@
 import * as jspb from "google-protobuf";
 
 export class Pagination extends jspb.Message {
+  getPage(): number;
+  setPage(value: number): void;
+
   getFirst(): number;
   setFirst(value: number): void;
 
-  getAfter(): number;
-  setAfter(value: number): void;
+  getAfter(): string;
+  setAfter(value: string): void;
 
   getOffset(): number;
   setOffset(value: number): void;
 
   getLimit(): number;
   setLimit(value: number): void;
+
+  getSort(): Pagination.SortMap[keyof Pagination.SortMap];
+  setSort(value: Pagination.SortMap[keyof Pagination.SortMap]): void;
 
   getPrevious(): string;
   setPrevious(value: string): void;
@@ -37,13 +43,22 @@ export class Pagination extends jspb.Message {
 
 export namespace Pagination {
   export type AsObject = {
+    page: number,
     first: number,
-    after: number,
+    after: string,
     offset: number,
     limit: number,
+    sort: Pagination.SortMap[keyof Pagination.SortMap],
     previous: string,
     next: string,
     identifier: string,
   }
+
+  export interface SortMap {
+    ASC: 0;
+    DSC: 1;
+  }
+
+  export const Sort: SortMap;
 }
 

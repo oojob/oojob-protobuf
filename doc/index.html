@@ -226,6 +226,10 @@
                 </li>
               
               
+                <li>
+                  <a href="#github.com.oojob.protobuf.Pagination.Sort"><span class="badge">E</span>Pagination.Sort</a>
+                </li>
+              
               
               
             </ul>
@@ -691,6 +695,13 @@
             <tbody>
               
                 <tr>
+                  <td>page</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>Pagination page :- act&#39;s as page metadata </p></td>
+                </tr>
+              
+                <tr>
                   <td>first</td>
                   <td><a href="#int64">int64</a></td>
                   <td></td>
@@ -699,7 +710,7 @@
               
                 <tr>
                   <td>after</td>
-                  <td><a href="#int64">int64</a></td>
+                  <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p>Pagination after :- after fetching skip the first x items </p></td>
                 </tr>
@@ -716,6 +727,13 @@
                   <td><a href="#int64">int64</a></td>
                   <td></td>
                   <td><p>Pagination limit :- standard limit in pagination </p></td>
+                </tr>
+              
+                <tr>
+                  <td>sort</td>
+                  <td><a href="#github.com.oojob.protobuf.Pagination.Sort">Pagination.Sort</a></td>
+                  <td></td>
+                  <td><p>Sort :- sort the result by ASC/DSC </p></td>
                 </tr>
               
                 <tr>
@@ -747,6 +765,29 @@
         
       
 
+      
+        <h3 id="github.com.oojob.protobuf.Pagination.Sort">Pagination.Sort</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>ASC</td>
+                <td>0</td>
+                <td><p>ASC :- sort by ascending</p></td>
+              </tr>
+            
+              <tr>
+                <td>DSC</td>
+                <td>1</td>
+                <td><p>DSC :-  sort by descending</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
       
 
       
@@ -954,7 +995,7 @@
               
                 <tr>
                   <td>postal_code</td>
-                  <td><a href="#string">string</a></td>
+                  <td><a href="#int64">int64</a></td>
                   <td></td>
                   <td><p>Address postal code :- For example, 94043. </p></td>
                 </tr>
@@ -998,7 +1039,7 @@
                 </tr>
               
                 <tr>
-                  <td>review_rount</td>
+                  <td>review_count</td>
                   <td><a href="#int64">int64</a></td>
                   <td></td>
                   <td><p>AggregateRating :- </p></td>

@@ -428,7 +428,7 @@ proto.github.com.oojob.protobuf.AggregateRating.toObject = function(includeInsta
   var f, obj = {
     itemReviewed: jspb.Message.getFieldWithDefault(msg, 1, ""),
     ratingCount: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    reviewRount: jspb.Message.getFieldWithDefault(msg, 3, 0)
+    reviewCount: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -475,7 +475,7 @@ proto.github.com.oojob.protobuf.AggregateRating.deserializeBinaryFromReader = fu
       break;
     case 3:
       var value = /** @type {number} */ (reader.readInt64());
-      msg.setReviewRount(value);
+      msg.setReviewCount(value);
       break;
     default:
       reader.skipField();
@@ -520,7 +520,7 @@ proto.github.com.oojob.protobuf.AggregateRating.serializeBinaryToWriter = functi
       f
     );
   }
-  f = message.getReviewRount();
+  f = message.getReviewCount();
   if (f !== 0) {
     writer.writeInt64(
       3,
@@ -567,10 +567,10 @@ proto.github.com.oojob.protobuf.AggregateRating.prototype.setRatingCount = funct
 
 
 /**
- * optional int64 review_rount = 3;
+ * optional int64 review_count = 3;
  * @return {number}
  */
-proto.github.com.oojob.protobuf.AggregateRating.prototype.getReviewRount = function() {
+proto.github.com.oojob.protobuf.AggregateRating.prototype.getReviewCount = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
@@ -579,7 +579,7 @@ proto.github.com.oojob.protobuf.AggregateRating.prototype.getReviewRount = funct
  * @param {number} value
  * @return {!proto.github.com.oojob.protobuf.AggregateRating} returns this
  */
-proto.github.com.oojob.protobuf.AggregateRating.prototype.setReviewRount = function(value) {
+proto.github.com.oojob.protobuf.AggregateRating.prototype.setReviewCount = function(value) {
   return jspb.Message.setProto3IntField(this, 3, value);
 };
 
@@ -1080,7 +1080,7 @@ proto.github.com.oojob.protobuf.Address.toObject = function(includeInstance, msg
     country: jspb.Message.getFieldWithDefault(msg, 1, ""),
     locality: jspb.Message.getFieldWithDefault(msg, 2, ""),
     region: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    postalCode: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    postalCode: jspb.Message.getFieldWithDefault(msg, 4, 0),
     street: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
@@ -1131,7 +1131,7 @@ proto.github.com.oojob.protobuf.Address.deserializeBinaryFromReader = function(m
       msg.setRegion(value);
       break;
     case 4:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {number} */ (reader.readInt64());
       msg.setPostalCode(value);
       break;
     case 5:
@@ -1189,8 +1189,8 @@ proto.github.com.oojob.protobuf.Address.serializeBinaryToWriter = function(messa
     );
   }
   f = message.getPostalCode();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f !== 0) {
+    writer.writeInt64(
       4,
       f
     );
@@ -1260,20 +1260,20 @@ proto.github.com.oojob.protobuf.Address.prototype.setRegion = function(value) {
 
 
 /**
- * optional string postal_code = 4;
- * @return {string}
+ * optional int64 postal_code = 4;
+ * @return {number}
  */
 proto.github.com.oojob.protobuf.Address.prototype.getPostalCode = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
 };
 
 
 /**
- * @param {string} value
+ * @param {number} value
  * @return {!proto.github.com.oojob.protobuf.Address} returns this
  */
 proto.github.com.oojob.protobuf.Address.prototype.setPostalCode = function(value) {
-  return jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3IntField(this, 4, value);
 };
 
 

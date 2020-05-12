@@ -1,0 +1,138 @@
+/**
+ * Created on Sun Apr 28 2020
+ *
+ * Base entity protobuf for place/rating/review associated with upper level
+ * models/schema's.
+ * This file is resposible for storing all the base protobuff `message`.
+ *
+ * @authors nirajgeorgian@oojob.io (Niraj Kishore)
+ *
+ * Copyright (c) 2020 - oojob
+ */
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package github.com.oojob.protobuf;
+
+option go_package = "github.com.oojob.protobuf";
+
+/**
+ * Range help's us to define min/max range value
+ */
+message Range {
+  /// Range min :- min value for range For example - 2
+  int64 min = 1;
+
+  /// Range max :- max value for range. For example - 5
+  int64 max = 2;
+}
+
+/**
+ * Empty is used in those place where don't have any input request
+ */
+message Empty {}
+
+/**
+ * DefaultResponse act's as a default response for our standard use case
+ */
+message DefaultResponse {
+  /// DefaultResponse status :- weather the performed operation succedded or not
+  bool status = 1;
+
+  /// DefaultResponse error :- what's the error if existed based on status
+  string error = 2;
+
+  /// DefaultResponse code :- what's the code for the error which originated
+  int64 code = 3;
+}
+
+/**
+ * Id help's us to define id as reusable peice
+ */
+message Id {
+  /// Id id :- uniquely identified value
+  string id = 1;
+}
+
+/**
+ * Email help's us to store email valeu with some metadata
+ */
+message Email {
+  /// Email email :- actual value of email
+  string email = 1;
+
+  /// Email EmailStatus :- values associated with email status
+  enum EmailStatus {
+    WAITING = 0;
+    CONFIRMED = 1;
+    BLOCKED = 2;
+    EXPIRED = 3;
+  }
+  /// Email status :- any one value from enum email status
+  EmailStatus status = 2;
+
+  /// Email show :- weather or not the email should be publically visible
+  bool show = 3;
+}
+
+/**
+ * Attachment help's us to define what type of attchment and which file is
+ * responsible for it.
+ */
+message Attachment {
+  /// Attachment type :- it defines file type which help's frontend to render
+  /// appropiate view for example: type = PDF || type = JPEG
+  string type = 1;
+
+  /// Attachment file :- file upload for this attachment same as `name`
+  string file = 2;
+
+  /// Attachment upload_date :- date time on which the attachment was uploaded
+  google.protobuf.Timestamp upload_date = 3;
+
+  /// Attachment url :- generated url for the attachment
+  string url = 4;
+
+  /// Attachment user :- user who upload the attachment
+  /// it will store the user id who stored the attachment
+  string user = 5;
+
+  /// folder :- which describe where to put it
+  /// for example for ccompanies in S3 there is a seperate folder for companies
+  /// for user profiles there is a seperate folder for user profile
+  string folder = 6;
+}
+
+/**
+ * Identifier help's us to represent an base entity
+ * (Person | Company | Job)
+ */
+message Identifier {
+  /// Identifier ID (uniquely identifythe item)
+  string identifier = 1;
+
+  /// Identifier name :- name for the identifier
+  string name = 2;
+
+  /// Identifier alternate name
+  string alternate_name = 3;
+
+  /// Identifier type :- type for the entity
+  string type = 4;
+
+  /// Identifier URL (generally a URL)
+  string additional_type = 5;
+
+  /// Identifier description
+  string description = 6;
+
+  /// Identifier description children to remove ambiguity
+  string disambiguating_description = 7;
+
+  /// Identifier headline :- short crisp about data
+  string headline = 8;
+
+  /// Identifier slogan
+  string slogan = 9;
+}

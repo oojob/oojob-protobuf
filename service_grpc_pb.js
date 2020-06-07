@@ -2,54 +2,39 @@
 
 // Original file comments:
 //
-// Created on Sun Apr 27 2020
+// Created on Sun Apr 28 2020
 //
-// Company entity related messages.
-// This file is resposible for all operation related to company entity.
+// Code entity related messages.
+// This file is resposible for all operation related to code entity.
 //
 // @authors nirajgeorgian@oojob.io (Niraj Kishore)
 //
 // Copyright (c) 2020 - oojob
 'use strict';
 var grpc = require('grpc');
-var services_company_service_pb = require('./service_pb.js');
-var github_com_oojob_protobuf_system_pb = require('../../github.com/oojob/protobuf/system_pb.js');
-var github_com_oojob_protobuf_place_pb = require('../../github.com/oojob/protobuf/place_pb.js');
-var github_com_oojob_protobuf_metadata_pb = require('../../github.com/oojob/protobuf/metadata_pb.js');
-var github_com_oojob_protobuf_cursor_pb = require('../../github.com/oojob/protobuf/cursor_pb.js');
-var github_com_oojob_protobuf_health_pb = require('../../github.com/oojob/protobuf/health_pb.js');
+var services_code_service_pb = require('./service_pb.js');
+var github_com_oojob_protobuf_health_pb = require('@oojob/oojob-protobuf/health_pb.js');
 
-function serialize_company_Company(arg) {
-  if (!(arg instanceof services_company_service_pb.Company)) {
-    throw new Error('Expected argument of type company.Company');
+function serialize_code_CodeRequest(arg) {
+  if (!(arg instanceof services_code_service_pb.CodeRequest)) {
+    throw new Error('Expected argument of type code.CodeRequest');
   }
   return new Buffer(arg.serializeBinary());
 }
 
-function deserialize_company_Company(buffer_arg) {
-  return services_company_service_pb.Company.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_code_CodeRequest(buffer_arg) {
+  return services_code_service_pb.CodeRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_company_CompanyAllResponse(arg) {
-  if (!(arg instanceof services_company_service_pb.CompanyAllResponse)) {
-    throw new Error('Expected argument of type company.CompanyAllResponse');
+function serialize_code_CodeResponse(arg) {
+  if (!(arg instanceof services_code_service_pb.CodeResponse)) {
+    throw new Error('Expected argument of type code.CodeResponse');
   }
   return new Buffer(arg.serializeBinary());
 }
 
-function deserialize_company_CompanyAllResponse(buffer_arg) {
-  return services_company_service_pb.CompanyAllResponse.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_github_com_oojob_protobuf_Empty(arg) {
-  if (!(arg instanceof github_com_oojob_protobuf_system_pb.Empty)) {
-    throw new Error('Expected argument of type github.com.oojob.protobuf.Empty');
-  }
-  return new Buffer(arg.serializeBinary());
-}
-
-function deserialize_github_com_oojob_protobuf_Empty(buffer_arg) {
-  return github_com_oojob_protobuf_system_pb.Empty.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_code_CodeResponse(buffer_arg) {
+  return services_code_service_pb.CodeResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_github_com_oojob_protobuf_HealthCheckRequest(arg) {
@@ -74,100 +59,21 @@ function deserialize_github_com_oojob_protobuf_HealthCheckResponse(buffer_arg) {
   return github_com_oojob_protobuf_health_pb.HealthCheckResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_github_com_oojob_protobuf_Id(arg) {
-  if (!(arg instanceof github_com_oojob_protobuf_system_pb.Id)) {
-    throw new Error('Expected argument of type github.com.oojob.protobuf.Id');
-  }
-  return new Buffer(arg.serializeBinary());
-}
 
-function deserialize_github_com_oojob_protobuf_Id(buffer_arg) {
-  return github_com_oojob_protobuf_system_pb.Id.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_github_com_oojob_protobuf_Pagination(arg) {
-  if (!(arg instanceof github_com_oojob_protobuf_cursor_pb.Pagination)) {
-    throw new Error('Expected argument of type github.com.oojob.protobuf.Pagination');
-  }
-  return new Buffer(arg.serializeBinary());
-}
-
-function deserialize_github_com_oojob_protobuf_Pagination(buffer_arg) {
-  return github_com_oojob_protobuf_cursor_pb.Pagination.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-
-//
-// CompanyService service file for company entity
-var CompanyServiceService = exports.CompanyServiceService = {
-  createCompany: {
-    path: '/company.CompanyService/CreateCompany',
+var CodeServiceService = exports.CodeServiceService = {
+  submitCode: {
+    path: '/code.CodeService/SubmitCode',
     requestStream: false,
     responseStream: false,
-    requestType: services_company_service_pb.Company,
-    responseType: github_com_oojob_protobuf_system_pb.Id,
-    requestSerialize: serialize_company_Company,
-    requestDeserialize: deserialize_company_Company,
-    responseSerialize: serialize_github_com_oojob_protobuf_Id,
-    responseDeserialize: deserialize_github_com_oojob_protobuf_Id,
-  },
-  readCompany: {
-    path: '/company.CompanyService/ReadCompany',
-    requestStream: false,
-    responseStream: false,
-    requestType: github_com_oojob_protobuf_system_pb.Id,
-    responseType: services_company_service_pb.Company,
-    requestSerialize: serialize_github_com_oojob_protobuf_Id,
-    requestDeserialize: deserialize_github_com_oojob_protobuf_Id,
-    responseSerialize: serialize_company_Company,
-    responseDeserialize: deserialize_company_Company,
-  },
-  readCompanies: {
-    path: '/company.CompanyService/ReadCompanies',
-    requestStream: false,
-    responseStream: true,
-    requestType: github_com_oojob_protobuf_system_pb.Empty,
-    responseType: services_company_service_pb.Company,
-    requestSerialize: serialize_github_com_oojob_protobuf_Empty,
-    requestDeserialize: deserialize_github_com_oojob_protobuf_Empty,
-    responseSerialize: serialize_company_Company,
-    responseDeserialize: deserialize_company_Company,
-  },
-  readAllCompanies: {
-    path: '/company.CompanyService/ReadAllCompanies',
-    requestStream: false,
-    responseStream: false,
-    requestType: github_com_oojob_protobuf_cursor_pb.Pagination,
-    responseType: services_company_service_pb.CompanyAllResponse,
-    requestSerialize: serialize_github_com_oojob_protobuf_Pagination,
-    requestDeserialize: deserialize_github_com_oojob_protobuf_Pagination,
-    responseSerialize: serialize_company_CompanyAllResponse,
-    responseDeserialize: deserialize_company_CompanyAllResponse,
-  },
-  updateCompany: {
-    path: '/company.CompanyService/UpdateCompany',
-    requestStream: false,
-    responseStream: false,
-    requestType: services_company_service_pb.Company,
-    responseType: github_com_oojob_protobuf_system_pb.Id,
-    requestSerialize: serialize_company_Company,
-    requestDeserialize: deserialize_company_Company,
-    responseSerialize: serialize_github_com_oojob_protobuf_Id,
-    responseDeserialize: deserialize_github_com_oojob_protobuf_Id,
-  },
-  deleteCompany: {
-    path: '/company.CompanyService/DeleteCompany',
-    requestStream: false,
-    responseStream: false,
-    requestType: github_com_oojob_protobuf_system_pb.Id,
-    responseType: github_com_oojob_protobuf_system_pb.Id,
-    requestSerialize: serialize_github_com_oojob_protobuf_Id,
-    requestDeserialize: deserialize_github_com_oojob_protobuf_Id,
-    responseSerialize: serialize_github_com_oojob_protobuf_Id,
-    responseDeserialize: deserialize_github_com_oojob_protobuf_Id,
+    requestType: services_code_service_pb.CodeRequest,
+    responseType: services_code_service_pb.CodeResponse,
+    requestSerialize: serialize_code_CodeRequest,
+    requestDeserialize: deserialize_code_CodeRequest,
+    responseSerialize: serialize_code_CodeResponse,
+    responseDeserialize: deserialize_code_CodeResponse,
   },
   check: {
-    path: '/company.CompanyService/Check',
+    path: '/code.CodeService/Check',
     requestStream: false,
     responseStream: false,
     requestType: github_com_oojob_protobuf_health_pb.HealthCheckRequest,
@@ -178,7 +84,7 @@ var CompanyServiceService = exports.CompanyServiceService = {
     responseDeserialize: deserialize_github_com_oojob_protobuf_HealthCheckResponse,
   },
   watch: {
-    path: '/company.CompanyService/Watch',
+    path: '/code.CodeService/Watch',
     requestStream: false,
     responseStream: true,
     requestType: github_com_oojob_protobuf_health_pb.HealthCheckRequest,
@@ -190,4 +96,4 @@ var CompanyServiceService = exports.CompanyServiceService = {
   },
 };
 
-exports.CompanyServiceClient = grpc.makeGenericClientConstructor(CompanyServiceService);
+exports.CodeServiceClient = grpc.makeGenericClientConstructor(CodeServiceService);
